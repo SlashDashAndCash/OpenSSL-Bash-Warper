@@ -85,7 +85,7 @@ You can create a certificate by just creating a symbolic link to the desired tem
 
 Server certificate: `ln -s server_template.sh templates/hostname.domain`
 
-User certificate: `ln -s user_template.sh templates/hostname.domain`
+User certificate: `ln -s user_template.sh templates/username`
 
 Then execute the link to create a new key, certificate signing request (csr) and a signed certificate.
 
@@ -151,4 +151,22 @@ You can run the *interca.sh* script within an inter ca directory to extend the c
 History log
 -----------
 All executed scripts will be logged in *./templates/history.log* relative to the ca directory.
+
+
+Troubleshooting
+---------------
+
+If you run into an error the template script interrupts and you have to clean up.
+
+For user and server certificates you can use the archive script.
+
+`./templates/archive.sh hostname.domain`
+
+`./templates/archive.sh username`
+
+If the interca.sh script failes, you should remove the unfinished inter ca directory.
+
+`rm -rf yourname-caname-x1/`
+
+If the interca.sh script failes after signing, you must also remove the last entry from index.txt.
 
