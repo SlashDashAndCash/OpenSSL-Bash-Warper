@@ -72,6 +72,7 @@ See `man req` for details.
 ### OpenSSL Configuration
 You may want to customize the openssl.cnf file
 
+- crlbaseurl
 - countryName_default
 - stateOrProvinceName_default
 - 0.organizationName_default
