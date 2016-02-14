@@ -28,5 +28,5 @@ done
 # Log executed command to history
 base="\tCMD: $(basename $0)"
 [[ -L "$0" ]] && script="\tSCRIPT: $(readlink $0)"
-echo -e "[$(date +'%Y-%m-%d %H:%M:%S')]${script}${base} $@\nSAN=\"$SAN\"" >> "$SSLDIR/history.log"
+echo -e "[$(date +'%Y-%m-%d %H:%M:%S')]${script}${base} $@\nSAN=\"$SAN\"" >> "$(dirname $0)/history.log"
 

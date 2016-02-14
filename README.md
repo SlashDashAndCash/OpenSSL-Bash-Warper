@@ -17,9 +17,9 @@ This tool comes as a few bash scripts to simplify the process of making your own
 
 Requirements
 ------------
-OpenSSL >= 1.0.1
-Bash >= 4.3
-Git >= 2.1
+- OpenSSL >= 1.0.1
+- Bash >= 4.3
+- Git >= 2.1
 
 License
 ---------
@@ -43,12 +43,16 @@ Installation
 ------------
 
 Clone the Git repository to your home directory.
-`cd ~`
-`git clone 'https://github.com/SlashDashAndCash/OpenSSL-Bash-Warper.git'`
+```
+cd ~
+git clone 'https://github.com/SlashDashAndCash/OpenSSL-Bash-Warper.git'
+```
 
 Rename directory to your CA name, e.g. yourname-root-x1
-`mv OpenSSL-Bash-Warper yourname-root-x1`
-`cd yourname-root-x1`
+```
+mv OpenSSL-Bash-Warper yourname-root-x1
+cd yourname-root-x1
+```
 
 ### Initialize Root CA
 Creating the root ca is quite easy.
@@ -86,13 +90,17 @@ Then execute the link to create a new key, certificate signing request (csr) and
 
 If you already have a signing request, copy it to the *requests* directory.
 Filename must be the symbolic link with .csr extension.
-`vim requests/hostname.domain.csr`
-`./templates/hostname.domain`
+```
+vim requests/hostname.domain.csr
+./templates/hostname.domain
+```
 
 You may want to add *subject alternative names* to a server certificate.
-`export SAN='DNS:hostname.domain,DNS:hostname,IP:8.8.8.8,IP:8.8.4.4'`
-`./templates/hostname.domain`
-`export SAN=''`
+```
+export SAN='DNS:hostname.domain,DNS:hostname,IP:8.8.8.8,IP:8.8.4.4'
+./templates/hostname.domain
+export SAN=''
+```
 
 You can also provide extra parameters to signing command (openssl ca) regardless of server or user certificate
 `./templates/hostname.domain -option1 --option2 value --option3`
@@ -104,8 +112,10 @@ Revoke a certificate
 --------------------
 
 Replace the symbolic link with the revocation template.
-`ln -s -f revoke_template.sh templates/hostname.domain`
-`./templates/hostname.domain`
+```
+ln -s -f revoke_template.sh templates/hostname.domain
+./templates/hostname.domain
+```
 
 This will also create a new certificate revocation list (crl).
 `cat crl/yourname-root-x1.crl`
@@ -115,8 +125,10 @@ Create an intermediate CA
 -------------------------
 
 InterCAs are not self signed but signed by the root ca or another inter ca.
-`./templates/interca.sh yourname-caname-x1`
-`cd yourname-caname-x1`
+```
+./templates/interca.sh yourname-caname-x1
+cd yourname-caname-x1
+```
 
 Inter ca keys always have a 4096 modulus. Modify the interca.sh script to change this behavior.
 You may provide extra parameters to signing command (openssl ca).
@@ -133,5 +145,5 @@ You can run the *interca.sh* script within an inter ca directory to extend the c
 
 History log
 -----------
-All executed scripts will be logged in *history.log* relative to the ca directory.
+All executed scripts will be logged in *./templates/history.log* relative to the ca directory.
 

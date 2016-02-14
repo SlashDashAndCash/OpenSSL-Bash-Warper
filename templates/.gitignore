@@ -8,7 +8,7 @@
 !/rootca.sh
 !/interca.sh
 !/server_template.sh
-!/client_template.sh
+!/user_template.sh
 !/pkcs12.sh
 !/revoke_template.sh
 !/archive.sh
