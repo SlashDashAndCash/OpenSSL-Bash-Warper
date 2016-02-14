@@ -83,9 +83,11 @@ Create server and user certificates
 You can create a certificate by just creating a symbolic link to the desired template script.
 
 Server certificate: `ln -s server_template.sh templates/hostname.domain`
+
 User certificate: `ln -s user_template.sh templates/hostname.domain`
 
 Then execute the link to create a new key, certificate signing request (csr) and a signed certificate.
+
 `./templates/hostname.domain`
 
 If you already have a signing request, copy it to the *requests* directory.
@@ -103,6 +105,7 @@ export SAN=''
 ```
 
 You can also provide extra parameters to signing command (openssl ca) regardless of server or user certificate
+
 `./templates/hostname.domain -option1 --option2 value --option3`
 
 See `man ca` for available options.
@@ -118,6 +121,7 @@ ln -s -f revoke_template.sh templates/hostname.domain
 ```
 
 This will also create a new certificate revocation list (crl).
+
 `cat crl/yourname-root-x1.crl`
 
 
