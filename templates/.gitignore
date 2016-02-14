@@ -1,0 +1,15 @@
+# Ignore everything
+/*
+/*/
+
+# expect
+!/.gitignore
+!/base.sh
+!/rootca.sh
+!/interca.sh
+!/server_template.sh
+!/client_template.sh
+!/pkcs12.sh
+!/revoke_template.sh
+!/archive.sh
+

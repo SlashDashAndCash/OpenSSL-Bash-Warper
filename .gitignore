@@ -1,0 +1,11 @@
+# Ignore everything
+/*
+/*/
+
+# expect
+!/.gitignore
+!/LICENSE
+!/README.md
+!/openssl_example.cnf
+!/templates/
+
