@@ -54,6 +54,19 @@ mv OpenSSL-Bash-Warper yourname-root-x1
 cd yourname-root-x1
 ```
 
+### OpenSSL Configuration
+It's strongly recommended to customize the openssl.cnf file
+
+`cp openssl_example.cnf openssl.cnf`
+
+Replace the properties with your settings.
+- crlbaseurl
+- countryName_default
+- stateOrProvinceName_default
+- 0.organizationName_default
+- organizationalUnitName_default
+
+
 ### Initialize Root CA
 Creating the root ca is quite easy.
 `./templates/rootca.sh`
@@ -69,14 +82,6 @@ You may change this behavior by adding parameters.
 
 See `man req` for details.
 
-### OpenSSL Configuration
-You may want to customize the openssl.cnf file
-
-- crlbaseurl
-- countryName_default
-- stateOrProvinceName_default
-- 0.organizationName_default
-- organizationalUnitName_default
 
 Create server and user certificates
 -----------------------------------
@@ -156,7 +161,7 @@ All executed scripts will be logged in *./templates/history.log* relative to the
 Troubleshooting
 ---------------
 
-If you run into an error the template script interrupts and you have to clean up.
+If you run into an error, the template script interrupts and you have to clean up.
 
 For user and server certificates you can use the archive script.
 
@@ -164,9 +169,9 @@ For user and server certificates you can use the archive script.
 
 `./templates/archive.sh username`
 
-If the interca.sh script failes, you should remove the unfinished inter ca directory.
+If the *interca.sh* script failes, you should remove the unfinished inter ca directory.
 
 `rm -rf yourname-caname-x1/`
 
-If the interca.sh script failes after signing, you must also remove the last entry from index.txt.
+If the *interca.sh* script failes after signing, you must also remove the last entry from *index.txt*.
 
