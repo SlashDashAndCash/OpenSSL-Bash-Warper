@@ -55,7 +55,7 @@ cd yourname-root-x1
 ```
 
 ### OpenSSL Configuration
-It's strongly recommended to customize the openssl.cnf file
+It's strongly recommended to customize the *openssl.cnf* file
 
 `cp openssl_example.cnf openssl.cnf`
 
@@ -140,7 +140,7 @@ InterCAs are not self signed but signed by the root ca or another inter ca.
 cd yourname-caname-x1
 ```
 
-Inter ca keys always have a 4096 modulus. Modify the interca.sh script to change this behavior.
+Inter ca keys always have a 4096 modulus. Modify the *interca.sh* script to change this behavior.
 You may provide extra parameters to signing command (openssl ca).
 
 | Digest       | Validity     |
@@ -156,6 +156,21 @@ You can run the *interca.sh* script within an inter ca directory to extend the c
 History log
 -----------
 All executed scripts will be logged in *./templates/history.log* relative to the ca directory.
+
+
+Backup and Restore
+------------------
+
+Simply create a tar ball which supports of hard links by default.
+```
+cd ~
+tar -c -z -f "yourname-root-x1_$(date '+%Y-%m-%d').tar.gz" --preserve-permissions --same-owner --keep-directory-symlink yourname-root-x1/
+chmod 600 "yourname-root-x1_$(date '+%Y-%m-%d').tar.gz"
+```
+
+Extract the tar ball if you need to restore
+
+`tar -x -z -f "~/yourname-root-x1_$(date '+%Y-%m-%d').tar.gz" --preserve-permissions --same-owner --keep-directory-symlink`
 
 
 Troubleshooting
